@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kolmion pinta-ala laskuri</title>
+        <link href="styles.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <h1>Kolmion pinta-ala laskuri</h1>
+        <h2>moi</h2>
+        
+        <p id="id1"></p>
+
+        <script>
+        var kanta, korkeus
+        kanta = prompt("Kolmion kanta");
+        korkeus = prompt("Kolmion korkeus");
+        ala = (kanta * korkeus)/2;
+        document.getElementById("id1").innerHTML = "Kolmion pinta-ala on " + ala + "m^2";
+        </script>
+
+    </body>
+</html>
