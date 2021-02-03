@@ -42,7 +42,7 @@ function calculaTe() {
     var k;
     var output = ""
     var a;
-    var T;
+    var temp = Number.POSITIVE_INFINITY
 
     a = Number(document.getElementById("a").value);
 	
@@ -56,17 +56,28 @@ function calculaTe() {
             output = output + "<tr><td>" + x + "</td>";
             
             for(y = 0.2; y <= 1.2; y = y + 0.2) {
-                temp = temper(x,y,a);
+                if (temper(x,y,a) < temp){
+                    temp = temper(x,y,a)
+                    x_pienin = x
+                    y_pienin = y
+                    a_pienin = a
+                }
+                else{
+                
+                }
                 console.log(temp)
-                output = output + "<td>" + temp.toFixed(2) + "</td>"; //The deposit into the cell.
+                output = output + "<td>" + temper(x,y,a).toFixed(2) + "</td>"; //The deposit into the cell.
             }
             output = output + "</tr>"; //The row ends.
             x = x+1
         }
         output = output + "</table>"; //The table ends.
         document.getElementById("results").innerHTML = output;
+        document.getElementById("pienin").innerHTML = "Pienin lämpötila on "+temp.toFixed(2)+ ", mikä saadaan x:n arvolla: "+x_pienin+" ja y:n arvolla: "+y_pienin+ " a:n ollessa "+a_pienin;
     }
     else {
+        document.getElementById("results").innerHTML = "Virhe! a:n tulee olla välillä 0 ja 5.";
+        
 
     }
 }
@@ -83,6 +94,7 @@ function calculaTe() {
 <label>Muuttuja a:n arvo: </label><input type="text" id="a"><br>
 <p><input type="button" value="Calculate" onclick="calculaTe()"></p>
 <p id="results"></p>
+<p id="pienin"></p>
 
 
 </body>
