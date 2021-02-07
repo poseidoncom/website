@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Annettujen lukujen summa</title>
+
+<script>
+function calcSum() {
+    var sum = 0;   //sum is initialized to 0
+    var loppuarvo;
+    var k;         //loop counter
+    var num;       //number
+    var output = "";
+    var kruuna = 0;
+    var klaava = 0;
+
+    loppuarvo = Number(prompt("Heittojen lukumäärä"));
+    for(k = 1; k <= loppuarvo; k = k + 1) {
+        tulos = Math.round(Math.random())
+        if (tulos == 0){
+            kruuna = kruuna +1
+        }
+        else{
+            klaava = klaava +1
+        }
+    }
+
+    output = "Heittoja: "+loppuarvo+" Kruunia: "+kruuna+" Klaavoja: "+klaava
+    prosentti = "Kruunia: " +(kruuna/loppuarvo)*100+ "%  Klaavoja: " +(klaava/loppuarvo)*100+ "% "
+    document.getElementById("id1").innerHTML = output;
+    document.getElementById("id2").innerHTML = prosentti;
+}
+</script>
+</head>
+
+<body>
+
+<h1>Kruuna vai Klaava</h1>
+
+<button onclick="calcSum()">Start</button>
+
+<h1>Tulos:</h1>
+<p id="id1"></p>
+<h2>Prosentteina:</h2>
+<p id="id2"></p>
+
+</body>
+</html>

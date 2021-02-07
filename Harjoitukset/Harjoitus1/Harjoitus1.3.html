@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jarrutusaika laskuri</title>
+    <link href="styles.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <h1>Reaktioaika</h1>
+        
+        <p id="id1"></p>
+        <p id="id2"></p>
+        <p id="id3"></p>
+
+        <script>
+            
+            /* laskee reaktionopeuden vaaratilanteen tullessa */
+            var nopeus, reaktioaika
+            nopeus = Number(prompt("Auton nopeus?(km/h):"));
+            reaktioaika = prompt("Kuskin reaktioaika(s): ");
+            reaktiomatka = (nopeus * reaktioaika)/3,6;
+            jarrutusmatka = (nopeus * nopeus)/233
+            kokonaismatka = reaktiomatka + jarrutusmatka;
+            console.log(reaktiomatka.toFixed(2))
+            console.log(jarrutusmatka.toFixed(2))
+            console.log(kokonaismatka.toFixed(2))
+            document.getElementById("id1").innerHTML = "Reaktiomatka " + reaktiomatka.toFixed(2) + " m";
+            document.getElementById("id2").innerHTML = "Jarrutusmatka " + jarrutusmatka.toFixed(2) + " m";
+            document.getElementById("id3").innerHTML = "Kokonaismatka " + kokonaismatka.toFixed(2) + " m";
+            //alert("Ohjelma päättyi, päivitä sivu.")
+
+        </script>
+
+    </body>
+</html>

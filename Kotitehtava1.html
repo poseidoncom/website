@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Korttipeli</title>
+        <link href="styles.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <script>
+        
+            function peli() {
+                var kone, pelaaja
+                kone1 = Math.floor(Math.random()*13)+1;
+                kone2 = Math.floor(Math.random()*13)+1;
+                kone = kone1 + kone2
+                pelaaja1 = Math.floor(Math.random()*13)+1;
+                pelaaja2 = Math.floor(Math.random()*13)+1;
+                pelaaja = pelaaja1 + pelaaja2
+                document.getElementById("id1").innerHTML ="Pelaajan kortit "+ pelaaja1+" ja "+ pelaaja2+", summa "+ pelaaja;
+                document.getElementById("id2").innerHTML ="Koneen kortit "+ kone1+" ja "+ kone2+", summa "+ kone;
+                
+                
+                if (pelaaja > 21 && kone > 21) {
+                    
+                    document.getElementById("id3").innerHTML ="Tasapeli!";
+                    
+                }
+                
+                else if (pelaaja == kone ) {
+                    
+                    document.getElementById("id3").innerHTML ="Tasapeli!";
+
+                }
+                //tästä eteenpäin pelaaja != kone, minkä vuoksi ehto voidaan jättää tulevista ehtolausekkeista pois
+                else if (pelaaja > 21){
+                    document.getElementById("id3").innerHTML ="Kone voitti";
+                }
+
+                else if (kone > 21) {
+                    document.getElementById("id3").innerHTML ="Pelaaja voitti";
+                }
+
+                else if (pelaaja > kone) {
+                    document.getElementById("id3").innerHTML ="Pelaaja voitti";
+                }
+                //muut mahdolliset tilanteet on käsitelty, jolloin halutessa voi käyttää pelkkää elseä
+                else {
+                    document.getElementById("id3").innerHTML ="Kone voitti";
+                }
+
+
+
+                 
+                
+
+
+        
+
+            }
+        
+            
+            
+        </script>
+
+        <h1>Pelaa venttiä koneen kanssa</h1>
+                
+
+        
+        
+        <input type="button" value="Pelaa" onclick="peli()">
+        <p id="id1">pelaaja:</p>
+        <p id="id2">kone:</p>
+        <p id="id3">voittaja:</p>
+        
+
+
+        
+
+        
+        
+
+    </body>
+</html>
