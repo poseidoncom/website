@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lämpötila</title>
+<style>
+body
+{
+   margin-left: 20px;
+}
+h1
+{
+   color:orange;
+}
+table, th, td 
+{
+   border: 1px solid black;
+}
+td, th {
+   padding-right:20px;
+   padding-left:20px;
+}
+th {
+   background-color: silver;
+}
+label {
+   width: 180px;
+   margin: 5px;
+   display: inline-block;
+}
+</style>
+
+<script>
+
+/* Bank deposit growth with annual interest rate 2, 4, and 6 */
+function temper(x,y,a) {
+   return Math.abs(a*Math.pow(x, 2)*Math.pow(y, 2)+Math.pow((6-x), 2)+(1-a)*(x/y))
+}
+function calculaTe() {
+    var x;
+    var y;
+    var k;
+    var output = ""
+    var a;
+    var temp = Number.POSITIVE_INFINITY
+
+    a = Number(document.getElementById("a").value);
+	
+
+    //The table begins
+    output = "<table><tr><th>x</th><th>0,2</th><th>0,4</th><th>0,6</th><th>0,8</th><th>1</th><th>1,2</th></tr>";
+    
+    if (a >= 0, a <= 5){
+        x = 1;
+        while(x <= 6) {
+            output = output + "<tr><td>" + x + "</td>";
+            
+            for(y = 0.2; y <= 1.2; y = y + 0.2) {
+                if (temper(x,y,a) < temp){
+                    temp = temper(x,y,a)
+                    x_pienin = x
+                    y_pienin = y
+                    a_pienin = a
+                }
+                else{
+                
+                }
+                console.log(temp)
+                output = output + "<td>" + temper(x,y,a).toFixed(2) + "</td>"; //The deposit into the cell.
+            }
+            output = output + "</tr>"; //The row ends.
+            x = x+1
+        }
+        output = output + "</table>"; //The table ends.
+        document.getElementById("results").innerHTML = output;
+        document.getElementById("pienin").innerHTML = "Pienin lämpötila on "+temp.toFixed(2)+ ", mikä saadaan x:n arvolla: "+x_pienin+" ja y:n arvolla: "+y_pienin+ " a:n ollessa "+a_pienin;
+    }
+    else {
+        document.getElementById("results").innerHTML = "Virhe! a:n tulee olla välillä 0 ja 5.";
+        
+
+    }
+}
+</script>
+</head>
+
+<body>
+
+<h1>Kemikaalin valmistuslämpötilan laskeminen: </h1>
+
+
+
+<p>
+<label>Muuttuja a:n arvo: </label><input type="text" id="a"><br>
+<p><input type="button" value="Calculate" onclick="calculaTe()"></p>
+<p id="results"></p>
+<p id="pienin"></p>
+
+
+</body>
+</html>
