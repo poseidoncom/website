@@ -10,7 +10,7 @@ body
 }
 h1
 {
-   color:orange;
+   color:rgb(96, 122, 240);
 }
 table, th, td 
 {
@@ -62,8 +62,10 @@ function calculaTe() {
         
         
     }
+    osuus = (korkoakorolle/varallisuus)*100
     output = output + "</table>"; //The table ends.
     document.getElementById("results").innerHTML = output;
+    document.getElementById("pienin").innerHTML = "Omaisuutta kertyisi "+n+":n vuoden aikana "+varallisuus.toFixed(2)+" €, josta "+osuus.toFixed(2)+" % ("+korkoakorolle.toFixed(2)+" €) korkoa korolle efektin myötä!";
     
 }
 </script>
@@ -76,10 +78,10 @@ function calculaTe() {
 
 
 <p>
-<label>Sijoitettava pääoma: </label><input type="text" id="S"><br>
-<label>korkoprosentti </label><input type="text" id="p"><br>
-<label>Sijoitusmäärä vuosina </label><input type="text" id="n"><br>
-<label>kuukausittainen sijoitus </label><input type="text" id="kk"><br>
+<label>Sijoitettava pääoma: </label><input type="text" id="S"> €<br>
+<label>Korkoprosentti: </label><input type="text" id="p"> %<br>
+<label>Sijoitusaika: </label><input type="text" id="n"> vuotta<br>
+<label>Kuukausisäästö: </label><input type="text" id="kk"> €<br>
 <p><input type="button" value="Calculate" onclick="calculaTe()"></p>
 <p id="results"></p>
 <p id="pienin"></p>
