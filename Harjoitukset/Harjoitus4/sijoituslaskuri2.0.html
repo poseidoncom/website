@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sijoituslaskuri</title>
+<style>
+body
+{
+   margin-left: 20px;
+}
+h1
+{
+   color:orange;
+}
+table, th, td 
+{
+   border: 1px solid black;
+}
+td, th {
+   padding-right:20px;
+   padding-left:20px;
+}
+th {
+   background-color: silver;
+}
+label {
+   width: 180px;
+   margin: 5px;
+   display: inline-block;
+}
+</style>
+
+<script>
+
+function calculaTe() {
+    var S;
+    var p;
+    var n;
+    var output = ""
+    var kk;
+    var korkoakorolle = 0
+    var varallisuus = 0
+
+    S = Number(document.getElementById("S").value);
+    p = Number(document.getElementById("p").value);
+    n = Number(document.getElementById("n").value);
+    kk = Number(document.getElementById("kk").value);
+	
+
+    //The table begins
+    output = "<table><tr><th>Vuosi</th><th>Varallisuus</th><th>Sijoitetun pääoman määrä</th><th>korkoa korolle-määrä</th></tr>";
+    
+    x = 1;
+    while(x <= n) {
+        varallisuus = S*(1+(p/100))**x;
+        korkoakorolle = varallisuus - S
+        output = output + "<tr><td>" + x + "</td>";
+        output = output + "<td>" +varallisuus.toFixed(2)+ "</td><td>"+S+"</td><td>"+korkoakorolle.toFixed(2)+"</td>"; //The deposit into the cell.
+        output = output + "</tr>"; //The row ends.
+        S = S + 12 * kk
+        x = x+1
+        
+        
+    }
+    output = output + "</table>"; //The table ends.
+    document.getElementById("results").innerHTML = output;
+    
+}
+</script>
+</head>
+
+<body>
+
+<h1>Sijoituslaskuri: </h1>
+
+
+
+<p>
+<label>Sijoitettava pääoma: </label><input type="text" id="S"><br>
+<label>korkoprosentti </label><input type="text" id="p"><br>
+<label>Sijoitusmäärä vuosina </label><input type="text" id="n"><br>
+<label>kuukausittainen sijoitus </label><input type="text" id="kk"><br>
+<p><input type="button" value="Calculate" onclick="calculaTe()"></p>
+<p id="results"></p>
+<p id="pienin"></p>
+
+
+</body>
+</html>
