@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
+    </head>
+
+    <body>
+        
+        <canvas id="line-chart" width="800" height="400"></canvas>
+        <script>
+        var s = [1000,200,896,58,529]
+        new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+            datasets: [{ 
+                data: s,
+                label: "Africa",
+                borderColor: "#3e95cd",
+                fill: false
+            }]
+        },
+        options: {
+            title: {
+            display: true,
+            text: 'World population per region (in millions)'
+            }
+        }
+        });
+
+        
+        </script>
+
+    </body>
+    
+
+
+</html>
