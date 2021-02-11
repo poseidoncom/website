@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>Sijoituslaskuri</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.com/libraries/Chart.js"></script>
 <style>
 body
 {
@@ -40,6 +42,11 @@ function calculaTe() {
     var kk;
     var korkoakorolle = 0
     var varallisuus = 0
+    var a = []
+    var b = []
+    var c = []
+    var d = []
+    
 
     S = Number(document.getElementById("S").value);
     p = Number(document.getElementById("p").value);
@@ -55,6 +62,10 @@ function calculaTe() {
         varallisuus = S*(1+(p/100))**x;
         korkoakorolle = varallisuus - S
         output = output + "<tr><td>" + x + "</td>";
+        a.push(varallisuus.toFixed(2));
+        b.push(korkoakorolle.toFixed(2));
+        c.push(S.toFixed(2));
+        d.push(x);
         output = output + "<td>" +varallisuus.toFixed(2)+ "</td><td>"+S+"</td><td>"+korkoakorolle.toFixed(2)+"</td>"; //The deposit into the cell.
         output = output + "</tr>"; //The row ends.
         S = S + 12 * kk
@@ -66,6 +77,36 @@ function calculaTe() {
     output = output + "</table>"; //The table ends.
     document.getElementById("results").innerHTML = output;
     document.getElementById("pienin").innerHTML = "Omaisuutta kertyisi "+n+":n vuoden aikana "+varallisuus.toFixed(2)+" €, josta "+osuus.toFixed(2)+" % ("+korkoakorolle.toFixed(2)+" €) korkoa korolle efektin myötä!";
+    
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: d,
+            datasets: [{ 
+                data: a,
+                label: "Varallisuus",
+                borderColor: "#3e95cd",
+                fill: false
+            }, {
+               data: b,
+               label: "Korkoa korolle",
+               borderColor: "#8e5ea2",
+               fill: false
+            }, {
+               data: c,
+               label: "Sijoitettu pääoma",
+               borderColor: "#3cba9f",
+               fill: false
+            }
+         ]
+        },
+        options: {
+            title: {
+            display: true,
+            text: 'Tulos'
+            }
+        }
+        });
     
 }
 </script>
@@ -85,6 +126,7 @@ function calculaTe() {
 <p><input type="button" value="Calculate" onclick="calculaTe()"></p>
 <p id="results"></p>
 <p id="pienin"></p>
+<canvas id="line-chart" width="800" height="400"></canvas>
 
 
 </body>
